@@ -1,16 +1,22 @@
-import { test } from './features/companiesSlice'
 import { useAppDispatch, useAppSelector } from './store/hooks'
+import { getCompanies } from './features/companiesSlice'
+import { useEffect, useState } from 'react'
+import { getEmployees } from './features/employeesSlice'
 
 function App() {
- const str = useAppSelector((state) => state.companies.str)
- const dispatch = useAppDispatch()
+	const dataCompanies = useAppSelector((state) => state.companies.data)
+	const dispatch = useAppDispatch()
 
- return (
-  <>
-   <div>{str}</div>
-   <button onClick={() => dispatch(test(`${str} World`))}>click</button>
-  </>
- )
+	useEffect(() => {
+		dispatch(getCompanies())
+		dispatch(getEmployees())
+	}, [])
+
+	return (
+		<>
+			<div>{dataCompanies && dataCompanies.length ? dataCompanies[0].name : ''}</div>
+		</>
+	)
 }
 
 export default App

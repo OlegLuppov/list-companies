@@ -1,22 +1,45 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { getApiResourse } from '../utils/network'
+import { URLS_COMPANIES } from '../utils/urls'
+import { ICompanies, IEmployees } from '../interfaces'
 
-const initialState: { str: string } = {
- str: 'Hello',
+interface IInitialState {
+	data?: ICompanies[]
+	dataEmployees?: IEmployees[]
+	isLoading: boolean
 }
 
-export const companiesSlice = createSlice({
- name: 'companies',
- initialState,
+const initialState: IInitialState = {
+	data: [],
+	isLoading: true,
+}
 
- reducers: {
-  test(state, action: PayloadAction<string>) {
-   state.str = action.payload
-   console.log(action.payload)
-  },
- },
+export const getCompanies = createAsyncThunk('companies', async () => {
+	const companies = await getApiResourse(`${URLS_COMPANIES.BASE_URL}${URLS_COMPANIES.COMPANIES}`)
+
+	return companies
 })
 
-export const { test } = companiesSlice.actions
+export const companiesSlice = createSlice({
+	name: 'companies',
+	initialState,
+
+	reducers: {},
+
+	extraReducers: (builder) => {
+		// get companies
+		builder.addCase(getCompanies.pending, (state) => {
+			state.isLoading = true
+		})
+
+		builder.addCase(getCompanies.fulfilled, (state, action) => {
+			state.isLoading = false
+			state.data = action.payload
+		})
+	},
+})
+
+export const {} = companiesSlice.actions
 
 export default companiesSlice.reducer

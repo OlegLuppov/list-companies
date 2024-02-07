@@ -1,13 +1,91 @@
 {
-    "posts": [
-      { "id": "1", "title": "a title", "views": 100 },
-      { "id": "2", "title": "another title", "views": 200 }
-    ],
-    "comments": [
-      { "id": "1", "text": "a comment about post 1", "postId": "1" },
-      { "id": "2", "text": "another comment about post 1", "postId": "1" }
-    ],
-    "profile": {
-      "name": "typicode"
+	"companies": [
+		{
+			"id": "1",
+			"name": "ИКС Холдинг",
+			"quantityEmpl": 0
+		},
+		{
+			"id": "2",
+			"name": "РТКЦ",
+			"quantityEmp": 0
+		},
+		{
+			"id": "3",
+			"name": "Автобан",
+			"quantityEmp": 0
+		}
+	],
+  "employees":[
+    {  
+    "id":"1",
+      "companyId":"1",
+      "fullName":{
+        "lastName":"Савельев",
+        "firstName":"Дмитрий",
+        "secondName":"Николаевич"
+      },
+      "position":"Sales Manager"
+    },
+    {
+      "id":"2",
+      "companyId":"1",
+      "fullName":{
+        "lastName":"Черемных",
+        "firstName":"Станислав",
+        "secondName":"Викторович"
+      },
+      "position":"Project Manager"
+    },
+    {
+      "id":"3",
+      "companyId":"2",
+      "fullName":{
+        "lastName":"Глухов",
+        "firstName":"Дмитрий",
+        "secondName":"Ильич"
+      },
+      "position":"Наладчик станков и манипуляторов с ЧПУ"
+    },
+    {
+      "id":"4",
+      "companyId":"2",
+      "fullName":{
+        "lastName":"Харин",
+        "firstName":"Руслан",
+        "secondName":"Андреевич"
+      },
+      "position":"Инженер конструктор"
+    },
+    {
+      "id":"5",
+      "companyId":"2",
+      "fullName":{
+        "lastName":"Николаев",
+        "firstName":"Николай",
+        "secondName":"Николаевич"
+      },
+      "position":"Project Developer"
+    },
+    {
+      "id":"6",
+      "companyId":"3",
+      "fullName":{
+        "lastName":"Петров",
+        "firstName":"Петр",
+        "secondName":"Петрович"
+      },
+      "position":"Devops"
+    },
+    {
+      "id":"7",
+       "companyId":"3",
+      "fullName":{
+        "lastName":"Иванов",
+        "firstName":"Иван",
+        "secondName":"Иванович"
+      },
+      "position":"Sisadmin"
     }
-  }
+  ]
+}

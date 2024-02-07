@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import companiesReduser from '../features/companiesSlice'
+import employeesSliceReduser from '../features/employeesSlice'
 
 const store = configureStore({
- reducer: {
-  companies: companiesReduser,
- },
+	reducer: {
+		companies: companiesReduser,
+		employees: employeesSliceReduser,
+	},
 })
 
 export default store
