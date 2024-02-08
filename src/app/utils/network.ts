@@ -26,5 +26,6 @@ export async function setApiCompanies(url: string, body: any) {
 		return data
 	} catch (err: any) {
 		console.error(`No set companies: ${err.message}`)
+		return []
 	}
 }

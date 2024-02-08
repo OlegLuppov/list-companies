@@ -1,29 +1,22 @@
 @mixin flex($align-items: start, $justify-content: center) {
- display: flex;
- align-items: $align-items;
- justify-content: $justify-content;
+	display: flex;
+	align-items: $align-items;
+	justify-content: $justify-content;
 }
 
 @mixin bgPositionImg(
- $background-repeat: no-repeat,
- $background-position: center,
- $background-size: contain
+	$background-repeat: no-repeat,
+	$background-position: center,
+	$background-size: contain
 ) {
- background-repeat: $background-repeat;
- background-position: $background-position;
- background-size: $background-size;
+	background-repeat: $background-repeat;
+	background-position: $background-position;
+	background-size: $background-size;
 }
 
-@mixin font(
- $font-family: Inter,
- $font-weight: 500,
- $font-size: 14px,
- $line-height: 16.94px,
- $text-align: center
-) {
- font-family: $font-family, 'san-serif';
- font-weight: $font-weight;
- font-size: $font-size;
- line-height: $line-height;
- text-align: $text-align;
+@mixin font($font-family: Inter, $font-weight: 500, $font-size: 14px, $text-align: center) {
+	font-family: $font-family, 'san-serif';
+	font-weight: $font-weight;
+	font-size: $font-size;
+	text-align: $text-align;
 }

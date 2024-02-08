@@ -1,0 +1,91 @@
+.t-companies {
+	width: calc(50% - 5px);
+	&__th {
+		width: 100%;
+		.t-companies__tr {
+			background-color: $blue1;
+			width: 100%;
+			@include flex(center, start);
+			gap: 5px;
+			padding: 5px 0 5px 5px;
+			border: 1px solid $grey1;
+			&--inp {
+				border: none;
+				.t-companies__inp-all {
+					cursor: pointer;
+				}
+				.t-companies__inp-label {
+					@include font(Inter, 500, 14px, start);
+					cursor: pointer;
+				}
+				background-color: #fff;
+			}
+
+			&--titles {
+				gap: 0;
+				.t-companies__td {
+					@include font(Inter, 700, 12px, center);
+					color: #000;
+					padding: 0 4px;
+					@include flex(center);
+					align-self: stretch;
+					&--select {
+						flex-basis: 10%;
+						padding: 0;
+						justify-content: start;
+					}
+					&--name {
+						flex-basis: 30%;
+					}
+					&--num {
+						flex-basis: 20%;
+						justify-content: end;
+					}
+					&--address {
+						flex-basis: 40%;
+					}
+				}
+			}
+		}
+	}
+	&__tb {
+		width: 100%;
+		border: 1px solid $grey1;
+		border-top: none;
+		height: calc(100vh - 75px);
+		overflow: auto;
+		.t-companies__tr {
+			background-color: #fff;
+			border-top: none;
+			border-left: none;
+			border-right: none;
+			gap: 0;
+
+			.t-companies__td {
+				@include font(Inter, 400, 12px, center);
+				color: #000;
+				padding: 0 4px;
+				@include flex(center);
+				align-self: stretch;
+				&--select {
+					flex-basis: 10%;
+					padding: 0;
+					justify-content: start;
+					.t-companies__inp {
+						cursor: pointer;
+					}
+				}
+				&--name {
+					flex-basis: 30%;
+				}
+				&--num {
+					flex-basis: 20%;
+					justify-content: end;
+				}
+				&--address {
+					flex-basis: 40%;
+				}
+			}
+		}
+	}
+}

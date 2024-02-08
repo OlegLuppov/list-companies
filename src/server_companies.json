@@ -3,17 +3,20 @@
 		{
 			"id": "1",
 			"name": "ИКС Холдинг",
-			"quantityEmpl": 0
+			"quantityEmpl": 0,
+      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6"
 		},
 		{
 			"id": "2",
 			"name": "РТКЦ",
-			"quantityEmp": 0
+			"quantityEmp": 0,
+      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6"
 		},
 		{
 			"id": "3",
 			"name": "Автобан",
-			"quantityEmp": 0
+			"quantityEmp": 0,
+      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6"
 		}
 	],
   "employees":[

@@ -2,6 +2,7 @@ export interface ICompanies {
 	id: string
 	name?: string
 	quantityEmpl?: number
+	address: string
 }
 
 export interface IEmployees {

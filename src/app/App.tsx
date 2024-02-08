@@ -1,21 +1,21 @@
-import { useAppDispatch, useAppSelector } from './store/hooks'
+import './app.scss'
+import { useAppDispatch } from './store/hooks'
 import { getCompanies } from './features/companiesSlice'
-import { useEffect, useState } from 'react'
-import { getEmployees } from './features/employeesSlice'
+import { useEffect } from 'react'
+import Companies from './components/companies_table'
 
 function App() {
-	const dataCompanies = useAppSelector((state) => state.companies.data)
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
-		dispatch(getCompanies())
-		dispatch(getEmployees())
+		const range = { start: 0, limit: 10 }
+		dispatch(getCompanies(range))
 	}, [])
 
 	return (
-		<>
-			<div>{dataCompanies && dataCompanies.length ? dataCompanies[0].name : ''}</div>
-		</>
+		<div className='container'>
+			<Companies />
+		</div>
 	)
 }
 
