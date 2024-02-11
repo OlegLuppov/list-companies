@@ -1,0 +1,37 @@
+.t-companies__tr {
+	width: calc(100% + 6px);
+	@include flex(center, start);
+	background-color: #fff;
+	border-bottom: 1px solid $grey1;
+	gap: 0;
+	padding: 5px 0 5px 5px;
+	&--selected {
+		background-color: $grey1;
+	}
+
+	.t-companies__td {
+		@include font(Inter, 400, 12px, center);
+		color: #000;
+		padding: 0 4px;
+		@include flex(center);
+		align-self: stretch;
+		&--select {
+			flex-basis: 10%;
+			padding: 0;
+			justify-content: start;
+			.t-companies__inp {
+				cursor: pointer;
+			}
+		}
+		&--name {
+			flex-basis: 30%;
+		}
+		&--num {
+			flex-basis: 20%;
+			justify-content: end;
+		}
+		&--address {
+			flex-basis: 40%;
+		}
+	}
+}

@@ -1,0 +1,8 @@
+.notification__wrp {
+	@include flex(center);
+	height: 100%;
+	.notification__description {
+		@include font(Inter, 600, 14px);
+		color: $grey2;
+	}
+}

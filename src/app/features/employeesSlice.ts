@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { getApiResourse } from '../utils/network'
-import { URLS_COMPANIES } from '../utils/urls'
+import { getApiResourse } from '../shared/utils/network'
+import { URLS_COMPANIES } from '../shared/utils/urls'
 import { IEmployees } from '../interfaces'
 
 interface IInitialState {
