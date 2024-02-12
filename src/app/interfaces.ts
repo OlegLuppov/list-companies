@@ -1,8 +1,11 @@
-export interface ICompanies {
+export interface IChangeCompany {
 	id: string
 	name?: string
+	address?: string
+}
+
+export interface ICompanies extends IChangeCompany {
 	quantityEmpl?: number
-	address: string
 	selected: boolean
 }
 

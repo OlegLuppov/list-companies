@@ -9,23 +9,24 @@ export async function getApiResourse(url: string) {
 		return data
 	} catch (err: any) {
 		console.error(`Not get companies: ${err.message}`)
+		return
 	}
 }
 
-export async function setApiCompanies(url: string, body: any) {
+export async function setApiResourse(url: string, body: any) {
 	try {
 		const resp = await fetch(url, {
-			method: 'POST',
+			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(body),
 		})
 
-		const data = await resp.json()
-		return data
+		const result = await resp.text()
+
+		return result
 	} catch (err: any) {
 		console.error(`No set companies: ${err.message}`)
-		return []
 	}
 }

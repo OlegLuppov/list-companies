@@ -1,189 +1,188 @@
-
 {
-	"companies": [
-		{
-			"id": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
-			"name": "ИКС Холдинг",
-			"quantityEmpl": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "7e53b619-0dd9-4e26-8180-26a93b194bfe",
-			"name": "РТКЦ",
-			"quantityEmp": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "6e60487d-96c6-4b0c-9dd0-914ac3bc3887",
-			"name": "Автобан",
-			"quantityEmp": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "e03737bc-b85d-4f1c-8257-700d78eb5f4e",
-			"name": "ИКС Холдинг",
-			"quantityEmpl": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "b843d949-ef89-4208-ae05-8388ed805921",
-			"name": "РТКЦ",
-			"quantityEmp": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "ffc7a40b-c199-4821-ba9f-468fa1cbc0f1",
-			"name": "Автобан",
-			"quantityEmp": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "2424bf1f-ab08-4466-8a13-c9eb3f16aaf7",
-			"name": "ИКС Холдинг",
-			"quantityEmpl": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "2f343b20-98fd-4ece-8f11-04a5732f0332",
-			"name": "РТКЦ",
-			"quantityEmp": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "05499587-1578-4213-99c4-0adb48bc4833",
-			"name": "Автобан",
-			"quantityEmp": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "e644f837-90e8-4f56-9852-936f621ab26a",
-			"name": "Автобан",
-			"quantityEmp": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "24157b34-9541-4866-aba2-62cef84860cd",
-			"name": "Автобан",
-			"quantityEmp": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "54092d92-ea7e-43d2-ac99-ca4109311a45",
-			"name": "Автобан",
-			"quantityEmp": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "d4f4086e-2332-40e3-92e3-848a200ed822",
-			"name": "Автобан",
-			"quantityEmp": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "32faf07a-896e-46c4-9577-b088d9174caa",
-			"name": "Автобан",
-			"quantityEmp": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "ae4d5358-2d39-40fe-ad47-5bfea71a9fa0",
-			"name": "Автобан",
-			"quantityEmp": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		},
-		{
-			"id": "8fa4bbb2-af0d-4037-bae1-ff98e5ab1d4b",
-			"name": "Автобан",
-			"quantityEmp": 0,
-      "address":"УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected":false
-		}
-	],
-  "employees":[
-    {  
-    "id":"1",
-      "companyId":"1",
-      "fullName":{
-        "lastName":"Савельев",
-        "firstName":"Дмитрий",
-        "secondName":"Николаевич"
-      },
-      "position":"Sales Manager"
+  "companies": [
+    {
+      "id": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
+      "name": "И",
+      "quantityEmpl": 0,
+      "address": "УР",
+      "selected": false
     },
     {
-      "id":"2",
-      "companyId":"1",
-      "fullName":{
-        "lastName":"Черемных",
-        "firstName":"Станислав",
-        "secondName":"Викторович"
-      },
-      "position":"Project Manager"
+      "id": "7e53b619-0dd9-4e26-8180-26a93b194bfe",
+      "name": "УР",
+      "quantityEmp": 0,
+      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "selected": false
     },
     {
-      "id":"3",
-      "companyId":"2",
-      "fullName":{
-        "lastName":"Глухов",
-        "firstName":"Дмитрий",
-        "secondName":"Ильич"
-      },
-      "position":"Наладчик станков и манипуляторов с ЧПУ"
+      "id": "6e60487d-96c6-4b0c-9dd0-914ac3bc3887",
+      "name": "УР. г.И",
+      "quantityEmp": 0,
+      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "selected": false
     },
     {
-      "id":"4",
-      "companyId":"2",
-      "fullName":{
-        "lastName":"Харин",
-        "firstName":"Руслан",
-        "secondName":"Андреевич"
-      },
-      "position":"Инженер конструктор"
+      "id": "e03737bc-b85d-4f1c-8257-700d78eb5f4e",
+      "name": "ИКС ",
+      "quantityEmpl": 0,
+      "address": "УР. ",
+      "selected": false
     },
     {
-      "id":"5",
-      "companyId":"2",
-      "fullName":{
-        "lastName":"Николаев",
-        "firstName":"Николай",
-        "secondName":"Николаевич"
-      },
-      "position":"Project Developer"
+      "id": "b843d949-ef89-4208-ae05-8388ed805921",
+      "name": "РТКЦ",
+      "quantityEmp": 0,
+      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "selected": false
     },
     {
-      "id":"6",
-      "companyId":"3",
-      "fullName":{
-        "lastName":"Петров",
-        "firstName":"Петр",
-        "secondName":"Петрович"
-      },
-      "position":"Devops"
+      "id": "ffc7a40b-c199-4821-ba9f-468fa1cbc0f1",
+      "name": "Автобан",
+      "quantityEmp": 0,
+      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "selected": false
     },
     {
-      "id":"7",
-       "companyId":"3",
-      "fullName":{
-        "lastName":"Иванов",
-        "firstName":"Иван",
-        "secondName":"Иванович"
+      "id": "2424bf1f-ab08-4466-8a13-c9eb3f16aaf7",
+      "name": "ИКС Холдинг",
+      "quantityEmpl": 0,
+      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "selected": false
+    },
+    {
+      "id": "2f343b20-98fd-4ece-8f11-04a5732f0332",
+      "name": "РТКЦ",
+      "quantityEmp": 0,
+      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "selected": false
+    },
+    {
+      "id": "05499587-1578-4213-99c4-0adb48bc4833",
+      "name": "Автобан",
+      "quantityEmp": 0,
+      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "selected": false
+    },
+    {
+      "id": "e644f837-90e8-4f56-9852-936f621ab26a",
+      "name": "Автобан",
+      "quantityEmp": 0,
+      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "selected": false
+    },
+    {
+      "id": "24157b34-9541-4866-aba2-62cef84860cd",
+      "name": "Автобан",
+      "quantityEmp": 0,
+      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "selected": false
+    },
+    {
+      "id": "54092d92-ea7e-43d2-ac99-ca4109311a45",
+      "name": "Автобан",
+      "quantityEmp": 0,
+      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "selected": false
+    },
+    {
+      "id": "d4f4086e-2332-40e3-92e3-848a200ed822",
+      "name": "Автобан",
+      "quantityEmp": 0,
+      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "selected": false
+    },
+    {
+      "id": "32faf07a-896e-46c4-9577-b088d9174caa",
+      "name": "Автобан",
+      "quantityEmp": 0,
+      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "selected": false
+    },
+    {
+      "id": "ae4d5358-2d39-40fe-ad47-5bfea71a9fa0",
+      "name": "Автобан",
+      "quantityEmp": 0,
+      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "selected": false
+    },
+    {
+      "id": "8fa4bbb2-af0d-4037-bae1-ff98e5ab1d4b",
+      "name": "Автобан",
+      "quantityEmp": 0,
+      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "selected": false
+    }
+  ],
+  "employees": [
+    {
+      "id": "1",
+      "companyId": "1",
+      "fullName": {
+        "lastName": "Савельев",
+        "firstName": "Дмитрий",
+        "secondName": "Николаевич"
       },
-      "position":"Sisadmin"
+      "position": "Sales Manager"
+    },
+    {
+      "id": "2",
+      "companyId": "1",
+      "fullName": {
+        "lastName": "Черемных",
+        "firstName": "Станислав",
+        "secondName": "Викторович"
+      },
+      "position": "Project Manager"
+    },
+    {
+      "id": "3",
+      "companyId": "2",
+      "fullName": {
+        "lastName": "Глухов",
+        "firstName": "Дмитрий",
+        "secondName": "Ильич"
+      },
+      "position": "Наладчик станков и манипуляторов с ЧПУ"
+    },
+    {
+      "id": "4",
+      "companyId": "2",
+      "fullName": {
+        "lastName": "Харин",
+        "firstName": "Руслан",
+        "secondName": "Андреевич"
+      },
+      "position": "Инженер конструктор"
+    },
+    {
+      "id": "5",
+      "companyId": "2",
+      "fullName": {
+        "lastName": "Николаев",
+        "firstName": "Николай",
+        "secondName": "Николаевич"
+      },
+      "position": "Project Developer"
+    },
+    {
+      "id": "6",
+      "companyId": "3",
+      "fullName": {
+        "lastName": "Петров",
+        "firstName": "Петр",
+        "secondName": "Петрович"
+      },
+      "position": "Devops"
+    },
+    {
+      "id": "7",
+      "companyId": "3",
+      "fullName": {
+        "lastName": "Иванов",
+        "firstName": "Иван",
+        "secondName": "Иванович"
+      },
+      "position": "Sisadmin"
     }
   ]
 }

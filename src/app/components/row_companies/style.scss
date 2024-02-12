@@ -33,5 +33,17 @@
 		&--address {
 			flex-basis: 40%;
 		}
+
+		.t-companies__td-inp {
+			padding: 0 5px;
+			text-align: center;
+			border: none;
+			border-radius: 4px;
+			&:focus-within {
+				outline-color: $blue2;
+				outline-style: groove;
+				// border: 2px solid $blue2;
+			}
+		}
 	}
 }
