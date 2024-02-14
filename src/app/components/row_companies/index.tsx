@@ -3,7 +3,11 @@ import { IRowCompaniesProps } from '../../interfaces'
 
 import cl from 'classnames'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { changeCompany, changeSelectedCompany, setCompanies } from '../../features/companiesSlice'
+import {
+	changeCompany,
+	changeSelectedCompany,
+	updateCompaniesFetch,
+} from '../../features/companiesSlice'
 import { useState } from 'react'
 
 function RowCompanies({ company }: IRowCompaniesProps) {
@@ -13,7 +17,7 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 	const [address, setAddress] = useState(company.address)
 
 	const isSelectedAll = useAppSelector((state) => state.companies.isSelectedAll)
-	const isSelectedSeveral = useAppSelector((state) => state.companies.isSelectedSeveral)
+	const currentCompanies = useAppSelector((state) => state.companies.currentCompanies)
 	const dispatch = useAppDispatch()
 
 	function handlerSelectCopmpany(e: React.ChangeEvent<HTMLInputElement>) {
@@ -58,7 +62,7 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 		}
 
 		dispatch(changeCompany(newDataCompany))
-		dispatch(setCompanies(newDataCompany))
+		dispatch(updateCompaniesFetch(newDataCompany))
 	}
 
 	function handlerEnterPressAddress(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -73,7 +77,7 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 		}
 
 		dispatch(changeCompany(newDataCompany))
-		dispatch(setCompanies(newDataCompany))
+		dispatch(updateCompaniesFetch(newDataCompany))
 	}
 
 	return (
@@ -90,7 +94,7 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 					type='checkbox'
 				/>
 			</div>
-			{isEditName && company.selected && !isSelectedAll && !isSelectedSeveral ? (
+			{isEditName && company.selected && !isSelectedAll && currentCompanies.length === 1 ? (
 				<div
 					onDoubleClick={handlerDoubleClickName}
 					className='t-companies__td t-companies__td--name'
@@ -115,7 +119,7 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 			<div className='t-companies__td t-companies__td--num'>
 				<p>{company.quantityEmpl}</p>
 			</div>
-			{isEditAddress && company.selected && !isSelectedAll && !isSelectedSeveral ? (
+			{isEditAddress && company.selected && !isSelectedAll && currentCompanies.length === 1 ? (
 				<div
 					onDoubleClick={(e) => {
 						e.stopPropagation()

@@ -37,12 +37,11 @@
 		.t-companies__td-inp {
 			padding: 0 5px;
 			text-align: center;
-			border: none;
+			border: 1px solid transparent;
 			border-radius: 4px;
-			&:focus-within {
-				outline-color: $blue2;
-				outline-style: groove;
-				// border: 2px solid $blue2;
+			&:focus {
+				outline: none;
+				border-color: $blue2;
 			}
 		}
 	}

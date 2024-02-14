@@ -3,18 +3,32 @@ import { v4 } from 'uuid'
 import Notification from '../../../ui/notification'
 import Preloader from '../../../ui/preloader'
 import { useAppSelector, useAppDispatch } from '../../store/hooks'
-import { useEffect, useRef, useState } from 'react'
-import { changeSelectedAllCompanies, getCompanies } from '../../features/companiesSlice'
+import React, { useEffect, useRef, useState } from 'react'
+import {
+	changeSelectedAllCompanies,
+	deleteCompanies,
+	deleteCompaniesFetch,
+	getCompaniesFetch,
+	postCompaniesFetch,
+} from '../../features/companiesSlice'
 import { useRange } from '../../shared/hooks/hooks'
 import RowCompanies from '../row_companies'
+import ButtonAdd from '../../../ui/buttons/button_add'
+import ButtonDelete from '../../../ui/buttons/button_delete'
+import cl from 'classnames'
+import ButtonClose from '../../../ui/buttons/button_close'
 
 function Companies() {
 	const { range, increaseRange } = useRange({ start: 0, limit: 10 })
 	const scrollbar = useRef<HTMLInputElement>(null)
 	const [showPreloader, setShowPreloader] = useState<boolean>(false)
+	const [showForm, setShowForm] = useState<boolean>(false)
+	const [formName, setFormName] = useState<string>('')
+	const [formAddress, setFormAddress] = useState<string>('')
 
 	const checkEndData = useAppSelector((state) => state.companies.checkEndData)
 	const data = useAppSelector((state) => state.companies.data)
+	const currentCompanies = useAppSelector((state) => state.companies.currentCompanies)
 
 	const dispatch = useAppDispatch()
 
@@ -24,7 +38,7 @@ function Companies() {
 	useEffect(() => {
 		if (!range) return
 		setShowPreloader(true)
-		dispatch(getCompanies(range)).finally(() => setShowPreloader(false))
+		dispatch(getCompaniesFetch(range)).finally(() => setShowPreloader(false))
 	}, [range])
 
 	// if is scroll
@@ -53,8 +67,95 @@ function Companies() {
 		dispatch(changeSelectedAllCompanies(e.target.checked))
 	}
 
+	function handlerDelete() {
+		console.log('delete')
+		dispatch(deleteCompanies())
+		dispatch(deleteCompaniesFetch(currentCompanies))
+	}
+
+	function handlerSubmit(e: React.FormEvent) {
+		e.preventDefault()
+
+		const dataCompany = {
+			id: v4(),
+			name: formName,
+			address: formAddress,
+		}
+
+		dispatch(postCompaniesFetch(dataCompany))
+		setShowForm((prev) => !prev)
+	}
+
+	function hendlerAdd(e: React.MouseEvent<HTMLButtonElement>) {
+		e.preventDefault()
+		setShowForm((prev) => !prev)
+		setFormName((prev) => {
+			if (prev === '') return prev
+			return ''
+		})
+		setFormAddress((prev) => {
+			if (prev === '') return prev
+			return ''
+		})
+	}
+
+	function handlerFormName(e: React.ChangeEvent<HTMLInputElement>) {
+		setFormName(e.target.value)
+	}
+
+	function handlerFormAddres(e: React.ChangeEvent<HTMLInputElement>) {
+		setFormAddress(e.target.value)
+	}
+
 	return (
 		<div className='t-companies'>
+			<div
+				className={cl('form-bg', {
+					'form-bg--show': showForm,
+				})}
+			>
+				<form
+					onSubmit={(e) => handlerSubmit(e)}
+					className={cl('form', { 'form--show': showForm })}
+					action=''
+				>
+					<ButtonClose title='Закрыть' callback={hendlerAdd} />
+					<h2 className={cl('form__title', { 'form__title--show': showForm })}>Заполните данные</h2>
+
+					<div className='form__field-wrapper'>
+						<input
+							onChange={(e) => handlerFormName(e)}
+							className='form__field-inp'
+							type='text'
+							name='name'
+							id='name'
+							value={formName}
+							required
+						/>
+						<label className='form__field-lbl' htmlFor='name'>
+							Название компании
+						</label>
+					</div>
+					<div className='form__field-wrapper'>
+						<input
+							onChange={(e) => handlerFormAddres(e)}
+							className='form__field-inp'
+							type='text'
+							name='address'
+							id='addres'
+							value={formAddress}
+							required
+						/>
+						<label className='form__field-lbl' htmlFor='addres'>
+							Адрес
+						</label>
+					</div>
+
+					<div className={cl('form__submit-wrapper', { 'form__submit-wrapper--show': showForm })}>
+						<input className='form__submit-btn' type='submit' value='Сохранить' name='Сохранить' />
+					</div>
+				</form>
+			</div>
 			<div className='t-companies__th'>
 				<div className='t-companies__tr t-companies__tr--inp'>
 					<div className='t-companies__inp-all-wrapper'>
@@ -67,6 +168,19 @@ function Companies() {
 						<label className='t-companies__inp-label' htmlFor={idForLabelInpAll}>
 							Выделить все
 						</label>
+					</div>
+					<div className='t-companies__btn-wrapper'>
+						<ButtonAdd
+							title='Добавить компанию'
+							show={true}
+							name='+ Компания'
+							callback={hendlerAdd}
+						/>
+						<ButtonDelete
+							title='Удалить компанию'
+							show={!currentCompanies.length ? false : true}
+							callback={handlerDelete}
+						/>
 					</div>
 				</div>
 				<div className='t-companies__tr t-companies__tr--titles'>
@@ -95,13 +209,15 @@ function Companies() {
 					description='Идет загрузка данных'
 					styles={{ top: '60px', height: 'calc(100% - 60px)' }}
 				/>
-				<ul className='t-companies__tb-list'>
-					{data && data.length ? (
-						data.map((com) => <RowCompanies key={v4()} company={com} />)
-					) : (
-						<Notification name='Компании не найдены' />
-					)}
-				</ul>
+				{data && data.length ? (
+					<ul className='t-companies__tb-list'>
+						{data.map((com) => (
+							<RowCompanies key={v4()} company={com} />
+						))}
+					</ul>
+				) : (
+					<Notification name='Компании не найдены' />
+				)}
 			</div>
 		</div>
 	)

@@ -2,114 +2,107 @@
   "companies": [
     {
       "id": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
-      "name": "И",
+      "name": "Компания 1",
       "quantityEmpl": 0,
-      "address": "УР",
+      "address": "Адрес 1",
       "selected": false
     },
     {
       "id": "7e53b619-0dd9-4e26-8180-26a93b194bfe",
-      "name": "УР",
+      "name": "Компания 2",
       "quantityEmp": 0,
-      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "address": "Адрес 2",
       "selected": false
     },
     {
       "id": "6e60487d-96c6-4b0c-9dd0-914ac3bc3887",
-      "name": "УР. г.И",
+      "name": "Компания 3",
       "quantityEmp": 0,
-      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "address": "Адрес 3",
       "selected": false
     },
     {
       "id": "e03737bc-b85d-4f1c-8257-700d78eb5f4e",
-      "name": "ИКС ",
+      "name": "Компания 4",
       "quantityEmpl": 0,
-      "address": "УР. ",
+      "address": "Адрес 4",
       "selected": false
     },
     {
       "id": "b843d949-ef89-4208-ae05-8388ed805921",
-      "name": "РТКЦ",
+      "name": "Компания 5",
       "quantityEmp": 0,
-      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "address": "Адрес 5",
       "selected": false
     },
     {
       "id": "ffc7a40b-c199-4821-ba9f-468fa1cbc0f1",
-      "name": "Автобан",
+      "name": "Компания 6",
       "quantityEmp": 0,
-      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "address": "Адрес 6",
       "selected": false
     },
     {
       "id": "2424bf1f-ab08-4466-8a13-c9eb3f16aaf7",
-      "name": "ИКС Холдинг",
+      "name": "Компания 7",
       "quantityEmpl": 0,
-      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "address": "Адрес 7",
       "selected": false
     },
     {
       "id": "2f343b20-98fd-4ece-8f11-04a5732f0332",
-      "name": "РТКЦ",
+      "name": "Компания 8",
       "quantityEmp": 0,
-      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "address": "Адрес 8",
       "selected": false
     },
     {
       "id": "05499587-1578-4213-99c4-0adb48bc4833",
-      "name": "Автобан",
+      "name": "Компания 9",
       "quantityEmp": 0,
-      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "address": "Адрес 9",
       "selected": false
     },
     {
       "id": "e644f837-90e8-4f56-9852-936f621ab26a",
-      "name": "Автобан",
+      "name": "Компания 10",
       "quantityEmp": 0,
-      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "address": "Адрес 10",
       "selected": false
     },
     {
       "id": "24157b34-9541-4866-aba2-62cef84860cd",
-      "name": "Автобан",
+      "name": "Компания 11",
       "quantityEmp": 0,
-      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "address": "Адрес 11",
       "selected": false
     },
     {
       "id": "54092d92-ea7e-43d2-ac99-ca4109311a45",
-      "name": "Автобан",
+      "name": "Компания 12",
       "quantityEmp": 0,
-      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "address": "Адрес 12",
       "selected": false
     },
     {
       "id": "d4f4086e-2332-40e3-92e3-848a200ed822",
-      "name": "Автобан",
+      "name": "Компания 13",
       "quantityEmp": 0,
-      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "address": "Адрес 13",
       "selected": false
     },
     {
       "id": "32faf07a-896e-46c4-9577-b088d9174caa",
-      "name": "Автобан",
+      "name": "Компания 14",
       "quantityEmp": 0,
-      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "address": "Адрес 14",
       "selected": false
     },
     {
       "id": "ae4d5358-2d39-40fe-ad47-5bfea71a9fa0",
-      "name": "Автобан",
+      "name": "Компания 15",
       "quantityEmp": 0,
-      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
-      "selected": false
-    },
-    {
-      "id": "8fa4bbb2-af0d-4037-bae1-ff98e5ab1d4b",
-      "name": "Автобан",
-      "quantityEmp": 0,
-      "address": "УР. г.Ижевск ул.Удмуртская д.5 кв.6",
+      "address": "Адрес 15",
       "selected": false
     }
   ],

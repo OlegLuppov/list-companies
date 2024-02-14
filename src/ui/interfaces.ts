@@ -12,3 +12,10 @@ export interface TPreloaderProps {
 	description?: string
 	styles?: IpreloaderStyles
 }
+
+export interface IButton {
+	name?: string
+	callback: (e: React.MouseEvent<HTMLButtonElement>) => void
+	show?: boolean
+	title?: string
+}

@@ -1,6 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { getApiResourse, setApiResourse } from '../shared/utils/network'
+import {
+	deleteApiResourse,
+	getApiResourse,
+	postApiResourse,
+	updateApiResourse,
+} from '../shared/utils/network'
 import { URLS_COMPANIES } from '../shared/utils/urls'
 import { IChangeCompany, ICompanies, TRange } from '../interfaces'
 
@@ -9,7 +14,7 @@ interface IInitialState {
 	isLoading: boolean
 	checkEndData: boolean
 	isSelectedAll: boolean
-	isSelectedSeveral: boolean
+	currentCompanies: string[]
 }
 
 const initialState: IInitialState = {
@@ -17,10 +22,10 @@ const initialState: IInitialState = {
 	isLoading: true,
 	checkEndData: false,
 	isSelectedAll: false,
-	isSelectedSeveral: false,
+	currentCompanies: [],
 }
 
-export const getCompanies = createAsyncThunk('setCompanies', async (range: TRange) => {
+export const getCompaniesFetch = createAsyncThunk('getCompanies', async (range: TRange) => {
 	const { start, limit } = range
 	const URL = `${URLS_COMPANIES.BASE_URL}${URLS_COMPANIES.COMPANIES}?_start=${start}&_end=${limit}`
 	const companies = await getApiResourse(URL)
@@ -28,24 +33,55 @@ export const getCompanies = createAsyncThunk('setCompanies', async (range: TRang
 	return companies
 })
 
-export const setCompanies = createAsyncThunk('getCompanies', async (data: IChangeCompany) => {
-	const URL = `${URLS_COMPANIES.BASE_URL}${URLS_COMPANIES.COMPANIES}/${data.id}`
-	let body
-	if (data.name) {
-		body = {
-			name: data.name,
+export const postCompaniesFetch = createAsyncThunk(
+	'postCompanies',
+	async (data: IChangeCompany) => {
+		const URL = `${URLS_COMPANIES.BASE_URL}${URLS_COMPANIES.COMPANIES}`
+		let body = {
+			id: data.id,
+			name: data.name ? data.name : '',
+			address: data.address ? data.address : '',
+			quantityEmp: 0,
+			selected: false,
 		}
-	}
 
-	if (data.address) {
-		body = {
-			address: data.address,
+		const result = await postApiResourse(URL, body)
+
+		return result
+	}
+)
+
+export const updateCompaniesFetch = createAsyncThunk(
+	'updateCompanies',
+	async (data: IChangeCompany) => {
+		const URL = `${URLS_COMPANIES.BASE_URL}${URLS_COMPANIES.COMPANIES}/${data.id}`
+		let body
+		if (data.name) {
+			body = {
+				name: data.name,
+			}
 		}
+
+		if (data.address) {
+			body = {
+				address: data.address,
+			}
+		}
+
+		const result = await updateApiResourse(URL, body)
+
+		return result
 	}
+)
 
-	const companies = await setApiResourse(URL, body)
+export const deleteCompaniesFetch = createAsyncThunk('deleteCompanies', async (ids: string[]) => {
+	if (!ids || !ids.length) return
 
-	return companies
+	const urls = ids.map((id) => {
+		return `${URLS_COMPANIES.BASE_URL}${URLS_COMPANIES.COMPANIES}/${id}`
+	})
+
+	await deleteApiResourse(urls)
 })
 
 export const companiesSlice = createSlice({
@@ -62,11 +98,10 @@ export const companiesSlice = createSlice({
 
 			findSelected.selected = action.payload.selected
 
-			const quantitySelected = state.data.filter((company) => company.selected).length
-			if (quantitySelected > 1) {
-				state.isSelectedSeveral = true
+			if (action.payload.selected) {
+				state.currentCompanies.push(action.payload.id)
 			} else {
-				state.isSelectedSeveral = false
+				state.currentCompanies = state.currentCompanies.filter((id) => id !== action.payload.id)
 			}
 		},
 
@@ -74,7 +109,15 @@ export const companiesSlice = createSlice({
 			if (action === null || action === undefined) return
 
 			state.isSelectedAll = action.payload
-			state.data.forEach((company) => (company.selected = action.payload))
+			state.data.forEach((company) => {
+				company.selected = action.payload
+			})
+
+			if (action.payload) {
+				state.currentCompanies = state.data.map((company) => company.id)
+			} else {
+				state.currentCompanies = []
+			}
 		},
 
 		changeCompany(state, action: PayloadAction<IChangeCompany>) {
@@ -92,16 +135,29 @@ export const companiesSlice = createSlice({
 				findCompany.address = action.payload.address
 			}
 		},
+
+		deleteCompanies(state) {
+			if (!state.currentCompanies || !state.currentCompanies.length) return
+
+			state.data = state.data.filter((company) => {
+				const findCurrId = state.currentCompanies.find((id) => id === company.id)
+
+				if (findCurrId) return false
+				return true
+			})
+
+			state.currentCompanies = []
+		},
 	},
 
 	extraReducers: (builder) => {
 		// get companies
-		builder.addCase(getCompanies.pending, (state) => {
+		builder.addCase(getCompaniesFetch.pending, (state) => {
 			state.isLoading = true
 		})
 
 		builder.addCase(
-			getCompanies.fulfilled,
+			getCompaniesFetch.fulfilled,
 			(state, action: PayloadAction<ICompanies[] | undefined>) => {
 				state.isLoading = false
 				if (!action.payload || !action.payload.length) {
@@ -109,25 +165,58 @@ export const companiesSlice = createSlice({
 					return
 				}
 
+				action.payload.forEach((company) => {
+					const findCompany = state.data.find((c) => c.id === company.id)
+					if (findCompany) return
+
+					if (state.isSelectedAll) {
+						company.selected = state.isSelectedAll
+					}
+					state.data.push(company)
+				})
+
 				if (state.isSelectedAll) {
-					action.payload.forEach((company) => (company.selected = state.isSelectedAll))
+					state.currentCompanies = [
+						...state.currentCompanies,
+						...action.payload.map((company) => company.id),
+					]
 				}
-				state.data = [...state.data, ...action.payload]
 			}
 		)
 
-		//set copmpanies
-		builder.addCase(setCompanies.pending, (state) => {
+		//update copmpanies
+		builder.addCase(updateCompaniesFetch.pending, (state) => {
 			state.isLoading = true
 		})
 
-		builder.addCase(setCompanies.fulfilled, (state) => {
+		builder.addCase(updateCompaniesFetch.fulfilled, (state) => {
 			state.isLoading = false
+		})
+
+		//delete copmpanies
+		builder.addCase(deleteCompaniesFetch.pending, (state) => {
+			state.isLoading = true
+		})
+
+		builder.addCase(deleteCompaniesFetch.fulfilled, (state) => {
+			state.isLoading = false
+		})
+
+		//post copmpanies
+		builder.addCase(postCompaniesFetch.pending, (state) => {
+			state.isLoading = true
+		})
+
+		builder.addCase(postCompaniesFetch.fulfilled, (state, action: PayloadAction<ICompanies>) => {
+			state.isLoading = false
+			if (!action.payload) return
+			state.data.push(action.payload)
+			return
 		})
 	},
 })
 
-export const { changeSelectedCompany, changeSelectedAllCompanies, changeCompany } =
+export const { changeSelectedCompany, changeSelectedAllCompanies, changeCompany, deleteCompanies } =
 	companiesSlice.actions
 
 export default companiesSlice.reducer

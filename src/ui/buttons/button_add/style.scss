@@ -1,0 +1,29 @@
+.btn-add {
+	@include font(Inter, 400);
+	color: $blue3;
+	padding: 3px 12px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	background-color: #fff;
+	transition: all 0.3s;
+	cursor: pointer;
+	&--hide {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	&:hover {
+		border: 1px solid $blue3;
+		color: black;
+		-webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+		-moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+		box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+	}
+
+	&:active {
+		-webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+		-moz-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+		box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+		opacity: 0.7;
+	}
+}
