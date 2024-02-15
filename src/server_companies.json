@@ -111,21 +111,21 @@
       "id": "1",
       "companyId": "1",
       "fullName": {
-        "lastName": "Савельев",
-        "firstName": "Дмитрий",
+        "firstName": "Дмитрий 111",
+        "lastName": "Савельев csacasca",
         "secondName": "Николаевич"
       },
-      "position": "Sales Manager"
+      "position": "Sales Manager 1111"
     },
     {
       "id": "2",
       "companyId": "1",
       "fullName": {
-        "lastName": "Черемных",
-        "firstName": "Станислав",
+        "firstName": "Не заполнено acacas",
+        "lastName": "Не заполнено csaca",
         "secondName": "Викторович"
       },
-      "position": "Project Manager"
+      "position": "Не заполнено"
     },
     {
       "id": "3",

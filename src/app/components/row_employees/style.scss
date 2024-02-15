@@ -1,4 +1,4 @@
-.t-companies__tr {
+.t-employees__tr {
 	width: calc(100% + 6px);
 	@include flex(center, start);
 	background-color: #fff;
@@ -9,7 +9,7 @@
 		background-color: $grey1;
 	}
 
-	.t-companies__td {
+	.t-employees__td {
 		@include font(Inter, 400, 12px, center);
 		color: #000;
 		padding: 0 4px;
@@ -19,21 +19,21 @@
 			flex-basis: 10%;
 			padding: 0;
 			justify-content: start;
-			.t-companies__inp {
+			.t-employees__inp {
 				cursor: pointer;
 			}
 		}
-		&--name {
+		&--lastname {
 			flex-basis: 30%;
 		}
-		&--num {
+		&--firsname {
 			flex-basis: 20%;
 		}
-		&--address {
+		&--position {
 			flex-basis: 40%;
 		}
 
-		.t-companies__td-inp {
+		.t-employees__td-inp {
 			padding: 0 5px;
 			text-align: center;
 			border: 1px solid transparent;

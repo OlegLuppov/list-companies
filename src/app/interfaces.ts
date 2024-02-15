@@ -4,6 +4,18 @@ export interface IChangeCompany {
 	address?: string
 }
 
+interface IFullName {
+	firstName?: string
+	lastName?: string
+	secondName?: string
+}
+
+export interface IChangeEmployee {
+	id: string
+	fullName?: IFullName
+	position?: string
+}
+
 export interface ICompanies extends IChangeCompany {
 	quantityEmpl?: number
 	selected: boolean
@@ -14,6 +26,7 @@ export interface IEmployees {
 	companyId?: string
 	fullName: TName
 	position?: string
+	selected: boolean
 }
 
 type TName = {
@@ -33,4 +46,8 @@ export interface IOptionsForGetCompanie extends TRange {
 
 export interface IRowCompaniesProps {
 	company: ICompanies
+}
+
+export interface IRowEmployeesProps {
+	employee: IEmployees
 }

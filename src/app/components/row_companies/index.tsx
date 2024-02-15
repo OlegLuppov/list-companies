@@ -23,27 +23,16 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 	function handlerSelectCopmpany(e: React.ChangeEvent<HTMLInputElement>) {
 		dispatch(changeSelectedCompany({ id: company.id, selected: e.target.checked }))
 	}
-
+	// Name
 	function handlerDoubleClickName() {
 		setIsEditName(true)
 		setIsEditAddress(false)
-	}
 
-	function handlerDoubleClickAddress() {
-		setIsEditAddress(true)
-		setIsEditName(false)
+		setAddress(company.address)
 	}
 
 	function handlerChangeName(e: React.ChangeEvent<HTMLInputElement>) {
 		setName((prev) => {
-			if (prev === e.target.value) return prev
-			prev = e.target.value
-			return prev
-		})
-	}
-
-	function handlerChangeAddress(e: React.ChangeEvent<HTMLInputElement>) {
-		setAddress((prev) => {
 			if (prev === e.target.value) return prev
 			prev = e.target.value
 			return prev
@@ -58,11 +47,27 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 
 		const newDataCompany = {
 			id: company.id,
-			name: name,
+			name: name ? name : 'Не заполнено',
 		}
 
 		dispatch(changeCompany(newDataCompany))
 		dispatch(updateCompaniesFetch(newDataCompany))
+	}
+
+	// Address
+	function handlerDoubleClickAddress() {
+		setIsEditAddress(true)
+		setIsEditName(false)
+
+		setName(company.name)
+	}
+
+	function handlerChangeAddress(e: React.ChangeEvent<HTMLInputElement>) {
+		setAddress((prev) => {
+			if (prev === e.target.value) return prev
+			prev = e.target.value
+			return prev
+		})
 	}
 
 	function handlerEnterPressAddress(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -73,7 +78,7 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 
 		const newDataCompany = {
 			id: company.id,
-			address: address,
+			address: address ? address : 'Не заполнено',
 		}
 
 		dispatch(changeCompany(newDataCompany))
@@ -95,10 +100,7 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 				/>
 			</div>
 			{isEditName && company.selected && !isSelectedAll && currentCompanies.length === 1 ? (
-				<div
-					onDoubleClick={handlerDoubleClickName}
-					className='t-companies__td t-companies__td--name'
-				>
+				<div className='t-companies__td t-companies__td--name'>
 					<input
 						autoFocus
 						onKeyDown={(e) => handlerEnterPressName(e)}
@@ -120,13 +122,7 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 				<p>{company.quantityEmpl}</p>
 			</div>
 			{isEditAddress && company.selected && !isSelectedAll && currentCompanies.length === 1 ? (
-				<div
-					onDoubleClick={(e) => {
-						e.stopPropagation()
-						handlerDoubleClickAddress()
-					}}
-					className='t-companies__td t-companies__td--address'
-				>
+				<div className='t-companies__td t-companies__td--address'>
 					<input
 						autoFocus
 						onKeyDown={(e) => handlerEnterPressAddress(e)}

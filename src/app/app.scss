@@ -4,4 +4,30 @@
 	padding: 10px 10px 0 10px;
 	@include flex();
 	gap: 10px;
+	@media (max-width: 768px) {
+		flex-wrap: wrap;
+		.companies__wrapper {
+			width: 100%;
+		}
+
+		.employees__wrapper {
+			width: 100%;
+		}
+	}
+	.companies__wrapper {
+		min-width: calc(50% - 5px);
+		.companies__title {
+			width: 100%;
+			@include font(Inter, 700, 16px);
+			text-decoration: underline;
+		}
+	}
+	.employees__wrapper {
+		min-width: calc(50% - 5px);
+		.employees__title {
+			width: 100%;
+			@include font(Inter, 700, 16px);
+			text-decoration: underline;
+		}
+	}
 }
