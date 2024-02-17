@@ -16,9 +16,14 @@ export function useRange(args: TRange | null) {
 		})
 	}
 
+	function resetRange() {
+		setRange(args)
+	}
+
 	return {
 		range,
 		setRange,
 		increaseRange,
+		resetRange,
 	}
 }

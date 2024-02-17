@@ -1,6 +1,11 @@
 .t-employees {
 	position: relative;
 	width: 100%;
+	transition: all 0.3s;
+	&--hide {
+		opacity: 0;
+		pointer-events: none;
+	}
 	.form-bg {
 		position: fixed;
 		top: 50%;

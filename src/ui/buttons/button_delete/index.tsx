@@ -10,7 +10,7 @@ function ButtonDelete({ show, title, callback }: IButton) {
 				'btn-delete--hide': !show,
 			})}
 			onKeyDown={(e) => e.preventDefault()}
-			onClick={callback}
+			onClick={(e) => callback(e)}
 		>
 			<div className='btn-delete__i-wrapper'></div>
 		</button>

@@ -2,6 +2,7 @@ export interface IChangeCompany {
 	id: string
 	name?: string
 	address?: string
+	quantityEmp?: number
 }
 
 interface IFullName {
@@ -17,7 +18,7 @@ export interface IChangeEmployee {
 }
 
 export interface ICompanies extends IChangeCompany {
-	quantityEmpl?: number
+	quantityEmp?: number
 	selected: boolean
 }
 
@@ -40,6 +41,10 @@ export type TRange = {
 	limit: number
 }
 
+export interface IGetEmployees extends TRange {
+	companyId: string
+}
+
 export interface IOptionsForGetCompanie extends TRange {
 	checkEndData: boolean
 }
@@ -50,4 +55,9 @@ export interface IRowCompaniesProps {
 
 export interface IRowEmployeesProps {
 	employee: IEmployees
+}
+
+export interface IDeleteCompaniesFetch {
+	companyIds: string[]
+	employeesIds: string[]
 }

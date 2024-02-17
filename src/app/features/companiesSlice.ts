@@ -7,7 +7,7 @@ import {
 	updateApiResourse,
 } from '../shared/utils/network'
 import { URLS_COMPANIES } from '../shared/utils/urls'
-import { IChangeCompany, ICompanies, TRange } from '../interfaces'
+import { IChangeCompany, ICompanies, IDeleteCompaniesFetch, TRange } from '../interfaces'
 
 interface IInitialState {
 	data: ICompanies[]
@@ -61,21 +61,44 @@ export const updateCompaniesFetch = createAsyncThunk(
 			}
 		}
 
+		// так потому что !data.quantityEmp = 0, а может приходить и 0
+		if (data.quantityEmp !== undefined && data.quantityEmp !== null) {
+			body = {
+				quantityEmp: data.quantityEmp,
+			}
+		}
+
 		const result = await updateApiResourse(URL, body)
 
 		return result
 	}
 )
 
-export const deleteCompaniesFetch = createAsyncThunk('deleteCompanies', async (ids: string[]) => {
-	if (!ids || !ids.length) return
+export const deleteCompaniesFetch = createAsyncThunk(
+	'deleteCompanies',
+	async (data: IDeleteCompaniesFetch) => {
+		if (!data.companyIds || !data.companyIds.length) return
+		/*
+		Важный момент, json-server не позволяет удалять сотрудников по query параметрам,
+		дла тествого задания пойдет, но в реальности Сервис должен обеспечивать такие вещи, либо проставлять 
+		элементам свойства deletedAt:true, но опять же по каким-либо query параметрам.
+		Хранить в сущности Компании id сотрудников тоже не стал их может быть со временем более 10000,
+		такой json получaть через api не прокатит, запрос может упасть.
+		 */
+		const urlsEmployees = data.employeesIds.map((id) => {
+			return `${URLS_COMPANIES.BASE_URL}${URLS_COMPANIES.EMPLOYEES}/${id}`
+		})
 
-	const urls = ids.map((id) => {
-		return `${URLS_COMPANIES.BASE_URL}${URLS_COMPANIES.COMPANIES}/${id}`
-	})
+		const urlsCompanies = data.companyIds.map((id) => {
+			return `${URLS_COMPANIES.BASE_URL}${URLS_COMPANIES.COMPANIES}/${id}`
+		})
 
-	await deleteApiResourse(urls)
-})
+		await Promise.all([
+			await deleteApiResourse(urlsCompanies),
+			await deleteApiResourse(urlsEmployees),
+		])
+	}
+)
 
 export const companiesSlice = createSlice({
 	name: 'companies',
@@ -126,6 +149,11 @@ export const companiesSlice = createSlice({
 
 			if (action.payload.address) {
 				findCompany.address = action.payload.address
+			}
+
+			// так потому что !action.payload.quantityEmp = 0, а может приходить и 0
+			if (action.payload.quantityEmp !== undefined && action.payload.quantityEmp !== null) {
+				findCompany.quantityEmp = action.payload.quantityEmp
 			}
 		},
 
@@ -182,8 +210,9 @@ export const companiesSlice = createSlice({
 			state.isLoading = true
 		})
 
-		builder.addCase(updateCompaniesFetch.fulfilled, (state) => {
+		builder.addCase(updateCompaniesFetch.fulfilled, (state, action: PayloadAction<any>) => {
 			state.isLoading = false
+			if (!action) return
 		})
 
 		//delete copmpanies
@@ -203,6 +232,7 @@ export const companiesSlice = createSlice({
 		builder.addCase(postCompaniesFetch.fulfilled, (state, action: PayloadAction<ICompanies>) => {
 			state.isLoading = false
 			if (!action.payload) return
+			action.payload.selected = state.isSelectedAll
 			state.data.push(action.payload)
 		})
 	},

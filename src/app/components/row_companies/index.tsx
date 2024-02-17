@@ -126,7 +126,7 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 			)}
 
 			<div className='t-companies__td t-companies__td--num'>
-				<p>{company.quantityEmpl}</p>
+				<p>{company.quantityEmp}</p>
 			</div>
 			{isEditAddress && company.selected && !isSelectedAll && currentCompanies.length === 1 ? (
 				<div className='t-companies__td t-companies__td--address'>

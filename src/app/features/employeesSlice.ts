@@ -7,7 +7,7 @@ import {
 	updateApiResourse,
 } from '../shared/utils/network'
 import { URLS_COMPANIES } from '../shared/utils/urls'
-import { IChangeEmployee, IEmployees, TRange } from '../interfaces'
+import { IChangeEmployee, IEmployees, IGetEmployees } from '../interfaces'
 
 interface IInitialState {
 	data: IEmployees[]
@@ -25,13 +25,16 @@ const initialState: IInitialState = {
 	currentEmployees: [],
 }
 
-export const getEmployeesFetch = createAsyncThunk('getEmployees', async (range: TRange) => {
-	const { start, limit } = range
-	const URL = `${URLS_COMPANIES.BASE_URL}${URLS_COMPANIES.EMPLOYEES}?_start=${start}&_end=${limit}`
-	const employees = await getApiResourse(URL)
+export const getEmployeesFetch = createAsyncThunk(
+	'getEmployees',
+	async (optionsfetch: IGetEmployees) => {
+		const { start, limit, companyId } = optionsfetch
+		const URL = `${URLS_COMPANIES.BASE_URL}${URLS_COMPANIES.EMPLOYEES}?companyId=${companyId}&_start=${start}&_end=${limit}`
+		const employees = await getApiResourse(URL)
 
-	return employees
-})
+		return employees
+	}
+)
 
 export const updateEmployeesFetch = createAsyncThunk(
 	'updateEmployees',
@@ -112,12 +115,16 @@ export const employeesSlice = createSlice({
 		},
 
 		deleteEmployees(state) {
-			if (!state.currentEmployees || !state.currentEmployees.length) return
+			if (!state.currentEmployees || !state.currentEmployees.length) {
+				return
+			}
 
 			state.data = state.data.filter((employee) => {
 				const findCurrId = state.currentEmployees.find((id) => id === employee.id)
 
-				if (findCurrId) return false
+				if (findCurrId) {
+					return false
+				}
 				return true
 			})
 
@@ -137,6 +144,12 @@ export const employeesSlice = createSlice({
 			} else {
 				state.currentEmployees = []
 			}
+		},
+
+		resetEmployees(state) {
+			state.data = []
+			state.currentEmployees = []
+			state.checkEndData = false
 		},
 	},
 
@@ -200,6 +213,7 @@ export const employeesSlice = createSlice({
 		builder.addCase(postEmployeesFetch.fulfilled, (state, action: PayloadAction<IEmployees>) => {
 			state.isLoading = false
 			if (!action.payload) return
+			action.payload.selected = state.isSelectedAll
 			state.data.push(action.payload)
 		})
 	},
@@ -210,6 +224,7 @@ export const {
 	changeEmployee,
 	deleteEmployees,
 	changeSelectedAllEmployees,
+	resetEmployees,
 } = employeesSlice.actions
 
 export default employeesSlice.reducer

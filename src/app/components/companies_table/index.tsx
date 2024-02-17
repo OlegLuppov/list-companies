@@ -25,10 +25,11 @@ function Companies() {
 	const [showForm, setShowForm] = useState<boolean>(false)
 	const [formName, setFormName] = useState<string>('')
 	const [formAddress, setFormAddress] = useState<string>('')
-
+	const [notificationMessage, setNotificationMessage] = useState<string>('')
 	const checkEndData = useAppSelector((state) => state.companies.checkEndData)
 	const data = useAppSelector((state) => state.companies.data)
 	const currentCompanies = useAppSelector((state) => state.companies.currentCompanies)
+	const dataEmployees = useAppSelector((state) => state.employees.data)
 
 	const dispatch = useAppDispatch()
 
@@ -38,7 +39,14 @@ function Companies() {
 	useEffect(() => {
 		if (!range) return
 		setShowPreloader(true)
-		dispatch(getCompaniesFetch(range)).finally(() => setShowPreloader(false))
+		dispatch(getCompaniesFetch(range)).finally(() => {
+			setShowPreloader(false)
+			if (!data || !data.length) {
+				setNotificationMessage('Компании не найдены')
+			} else {
+				setNotificationMessage('')
+			}
+		})
 	}, [range])
 
 	// if is scroll
@@ -55,9 +63,7 @@ function Companies() {
 	}
 
 	// if no scroll
-	function wheelHandler(e: React.MouseEvent<HTMLElement>) {
-		e.stopPropagation()
-
+	function wheelHandler() {
 		if (scrollbar.current?.scrollHeight! > scrollbar.current?.offsetHeight! || checkEndData) return // Проверка если скрол есть
 
 		increaseRange(10)
@@ -68,9 +74,15 @@ function Companies() {
 	}
 
 	function handlerDelete() {
-		console.log('delete')
 		dispatch(deleteCompanies())
-		dispatch(deleteCompaniesFetch(currentCompanies))
+
+		const employeesIds = dataEmployees.map((employee) => employee.id)
+
+		const dataDeleteFetch = {
+			companyIds: currentCompanies,
+			employeesIds: employeesIds,
+		}
+		dispatch(deleteCompaniesFetch(dataDeleteFetch))
 	}
 
 	function hendlerAdd(e: React.MouseEvent<HTMLButtonElement>) {
@@ -219,7 +231,7 @@ function Companies() {
 			<div
 				ref={scrollbar}
 				onScroll={scrollHandler}
-				onWheel={(e) => wheelHandler(e)}
+				onWheel={wheelHandler}
 				className={'t-companies__tb'}
 			>
 				<Preloader
@@ -234,7 +246,7 @@ function Companies() {
 						))}
 					</ul>
 				) : (
-					<Notification name='Компании не найдены' />
+					<Notification name={notificationMessage} />
 				)}
 			</div>
 		</div>

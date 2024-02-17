@@ -3,7 +3,7 @@
     {
       "id": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
       "name": "Компания 1",
-      "quantityEmpl": 0,
+      "quantityEmp": 11,
       "address": "Адрес 1",
       "selected": false
     },
@@ -24,7 +24,7 @@
     {
       "id": "e03737bc-b85d-4f1c-8257-700d78eb5f4e",
       "name": "Компания 4",
-      "quantityEmpl": 0,
+      "quantityEmp": 0,
       "address": "Адрес 4",
       "selected": false
     },
@@ -45,7 +45,7 @@
     {
       "id": "2424bf1f-ab08-4466-8a13-c9eb3f16aaf7",
       "name": "Компания 7",
-      "quantityEmpl": 0,
+      "quantityEmp": 0,
       "address": "Адрес 7",
       "selected": false
     },
@@ -64,125 +64,142 @@
       "selected": false
     },
     {
-      "id": "e644f837-90e8-4f56-9852-936f621ab26a",
+      "id": "7f7e8b3f-b7de-46c6-94ca-99cb1f08a9b4",
       "name": "Компания 10",
-      "quantityEmp": 0,
       "address": "Адрес 10",
+      "quantityEmp": 0,
       "selected": false
     },
     {
-      "id": "24157b34-9541-4866-aba2-62cef84860cd",
+      "id": "3d1daba3-f0e0-4f63-a95d-4b92a5915ceb",
       "name": "Компания 11",
-      "quantityEmp": 0,
       "address": "Адрес 11",
+      "quantityEmp": 0,
       "selected": false
     },
     {
-      "id": "54092d92-ea7e-43d2-ac99-ca4109311a45",
+      "id": "75d18e9f-d1b1-4be6-bd5e-7706c5cbd191",
       "name": "Компания 12",
-      "quantityEmp": 0,
       "address": "Адрес 12",
-      "selected": false
-    },
-    {
-      "id": "d4f4086e-2332-40e3-92e3-848a200ed822",
-      "name": "Компания 13",
       "quantityEmp": 0,
-      "address": "Адрес 13",
-      "selected": false
-    },
-    {
-      "id": "32faf07a-896e-46c4-9577-b088d9174caa",
-      "name": "Компания 14",
-      "quantityEmp": 0,
-      "address": "Адрес 14",
-      "selected": false
-    },
-    {
-      "id": "ae4d5358-2d39-40fe-ad47-5bfea71a9fa0",
-      "name": "Компания 15",
-      "quantityEmp": 0,
-      "address": "Адрес 15",
-      "selected": false
-    },
-    {
-      "id": "8fa4bbb2-af0d-4037-bae1-ff98e5ab1d4b",
-      "name": "Компания 16",
-      "quantityEmp": 0,
-      "address": "Адрес 16",
       "selected": false
     }
   ],
   "employees": [
     {
-      "id": "2",
-      "companyId": "1",
+      "id": "1",
+      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
       "fullName": {
-        "lastName": "Черемных",
-        "firstName": "Станислав",
-        "secondName": "Викторович"
+        "lastName": "Фамилия 1",
+        "firstName": "Имя 1",
+        "secondName": "Отчество 1"
       },
-      "position": "Project Manager"
+      "position": "Должность 1"
+    },
+    {
+      "id": "2",
+      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
+      "fullName": {
+        "lastName": "Фамилия 2",
+        "firstName": "Имя 2",
+        "secondName": "Отчество 2"
+      },
+      "position": "Должность 2"
     },
     {
       "id": "3",
-      "companyId": "2",
+      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
       "fullName": {
-        "firstName": "Дмитрий",
-        "lastName": "Глухов",
-        "secondName": "Ильич"
+        "lastName": "Фамилия 3",
+        "firstName": "Имя 3",
+        "secondName": "Отчество 3"
       },
-      "position": "должность"
+      "position": "Должность 3"
     },
     {
       "id": "4",
-      "companyId": "2",
+      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
       "fullName": {
-        "lastName": "Харин",
-        "firstName": "Руслан",
-        "secondName": "Андреевич"
+        "lastName": "Фамилия 4",
+        "firstName": "Имя 4",
+        "secondName": "Отчество 4"
       },
-      "position": "Инженер конструктор"
+      "position": "Должность 4"
     },
     {
       "id": "5",
-      "companyId": "2",
+      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
       "fullName": {
-        "lastName": "Николаев",
-        "firstName": "Николай",
-        "secondName": "Николаевич"
+        "lastName": "Фамилия 5",
+        "firstName": "Имя 5",
+        "secondName": "Отчество 5"
       },
-      "position": "Project Developer"
+      "position": "Должность 5"
     },
     {
-      "id": "6",
-      "companyId": "3",
+      "id": "f7ae77df-90af-4fc6-a651-003c441b3481",
+      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
       "fullName": {
-        "lastName": "Петров",
-        "firstName": "Петр",
-        "secondName": "Петрович"
-      },
-      "position": "Devops"
-    },
-    {
-      "id": "7",
-      "companyId": "3",
-      "fullName": {
-        "lastName": "Иванов",
-        "firstName": "Иван",
-        "secondName": "Иванович"
-      },
-      "position": "Sisadmin"
-    },
-    {
-      "id": "ebdee370-a988-4b07-bcba-3fb298e29c1b",
-      "companyId": "e050d772-61f5-4d52-b38d-2dcd3befcfe8",
-      "fullName": {
-        "firstName": "Имя",
-        "lastName": "Фамилия",
+        "firstName": "Имя 6",
+        "lastName": "Фамилия 6",
         "secondName": "Не предусмотрено по ТЗ"
       },
-      "position": "Должность",
+      "position": "Должность 6",
+      "selected": false
+    },
+    {
+      "id": "fb7ad28a-845c-444c-9615-e1cc2c3a73f2",
+      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
+      "fullName": {
+        "firstName": "Имя 7",
+        "lastName": "Фамилия 7",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "Должность 7",
+      "selected": false
+    },
+    {
+      "id": "74eea00c-1a09-4aeb-9ea7-70ae6cf783d6",
+      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
+      "fullName": {
+        "firstName": "Имя 8",
+        "lastName": "Фамилия 8",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "Должность 8",
+      "selected": false
+    },
+    {
+      "id": "595f7c7d-a1a8-4f17-b2b9-16575fff5a65",
+      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
+      "fullName": {
+        "firstName": "Имя 9",
+        "lastName": "Фамилия 9",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "Должность 9",
+      "selected": false
+    },
+    {
+      "id": "7e93efe1-a751-462e-916a-b11cb9ad5d7d",
+      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
+      "fullName": {
+        "firstName": "Имя 10",
+        "lastName": "Фамилия  10",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "Должность 10",
+      "selected": false
+    },
+    {
+      "id": "e465a2ef-bdbc-4d45-9288-17316807116f",
+      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
+      "fullName": {
+        "firstName": "Имя 11",
+        "lastName": "Фамилия 11",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "Должность 11",
       "selected": false
     }
   ]

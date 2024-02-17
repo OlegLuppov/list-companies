@@ -18,4 +18,5 @@ export interface IButton {
 	callback: (e: React.MouseEvent<HTMLButtonElement>) => void
 	show?: boolean
 	title?: string
+	disabled?: boolean
 }
