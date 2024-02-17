@@ -29,7 +29,6 @@ function Companies() {
 	const checkEndData = useAppSelector((state) => state.companies.checkEndData)
 	const data = useAppSelector((state) => state.companies.data)
 	const currentCompanies = useAppSelector((state) => state.companies.currentCompanies)
-	const dataEmployees = useAppSelector((state) => state.employees.data)
 
 	const dispatch = useAppDispatch()
 
@@ -76,13 +75,7 @@ function Companies() {
 	function handlerDelete() {
 		dispatch(deleteCompanies())
 
-		const employeesIds = dataEmployees.map((employee) => employee.id)
-
-		const dataDeleteFetch = {
-			companyIds: currentCompanies,
-			employeesIds: employeesIds,
-		}
-		dispatch(deleteCompaniesFetch(dataDeleteFetch))
+		dispatch(deleteCompaniesFetch(currentCompanies))
 	}
 
 	function hendlerAdd(e: React.MouseEvent<HTMLButtonElement>) {

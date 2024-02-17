@@ -56,8 +56,3 @@ export interface IRowCompaniesProps {
 export interface IRowEmployeesProps {
 	employee: IEmployees
 }
-
-export interface IDeleteCompaniesFetch {
-	companyIds: string[]
-	employeesIds: string[]
-}
