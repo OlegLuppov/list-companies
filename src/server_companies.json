@@ -104,38 +104,35 @@
       "quantityEmp": 0,
       "address": "Адрес 15",
       "selected": false
+    },
+    {
+      "id": "8fa4bbb2-af0d-4037-bae1-ff98e5ab1d4b",
+      "name": "Компания 16",
+      "quantityEmp": 0,
+      "address": "Адрес 16",
+      "selected": false
     }
   ],
   "employees": [
     {
-      "id": "1",
-      "companyId": "1",
-      "fullName": {
-        "firstName": "Дмитрий 111",
-        "lastName": "Савельев csacasca",
-        "secondName": "Николаевич"
-      },
-      "position": "Sales Manager 1111"
-    },
-    {
       "id": "2",
       "companyId": "1",
       "fullName": {
-        "firstName": "Не заполнено acacas",
-        "lastName": "Не заполнено csaca",
+        "lastName": "Черемных",
+        "firstName": "Станислав",
         "secondName": "Викторович"
       },
-      "position": "Не заполнено"
+      "position": "Project Manager"
     },
     {
       "id": "3",
       "companyId": "2",
       "fullName": {
-        "lastName": "Глухов",
         "firstName": "Дмитрий",
+        "lastName": "Глухов",
         "secondName": "Ильич"
       },
-      "position": "Наладчик станков и манипуляторов с ЧПУ"
+      "position": "должность"
     },
     {
       "id": "4",
@@ -176,6 +173,17 @@
         "secondName": "Иванович"
       },
       "position": "Sisadmin"
+    },
+    {
+      "id": "ebdee370-a988-4b07-bcba-3fb298e29c1b",
+      "companyId": "e050d772-61f5-4d52-b38d-2dcd3befcfe8",
+      "fullName": {
+        "firstName": "Имя",
+        "lastName": "Фамилия",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "Должность",
+      "selected": false
     }
   ]
 }

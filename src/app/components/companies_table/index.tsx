@@ -73,19 +73,6 @@ function Companies() {
 		dispatch(deleteCompaniesFetch(currentCompanies))
 	}
 
-	function handlerSubmit(e: React.FormEvent) {
-		e.preventDefault()
-
-		const dataCompany = {
-			id: v4(),
-			name: formName,
-			address: formAddress,
-		}
-
-		dispatch(postCompaniesFetch(dataCompany))
-		setShowForm((prev) => !prev)
-	}
-
 	function hendlerAdd(e: React.MouseEvent<HTMLButtonElement>) {
 		e.preventDefault()
 		setShowForm((prev) => !prev)
@@ -99,12 +86,42 @@ function Companies() {
 		})
 	}
 
-	function handlerFormName(e: React.ChangeEvent<HTMLInputElement>) {
-		setFormName(e.target.value)
+	//handlerForm
+	function handlerFormInput(e: React.ChangeEvent<HTMLInputElement>, field: string) {
+		switch (field) {
+			case 'name':
+				setFormName(e.target.value)
+				break
+
+			case 'address':
+				setFormAddress(e.target.value)
+				break
+
+			default:
+				break
+		}
 	}
 
-	function handlerFormAddres(e: React.ChangeEvent<HTMLInputElement>) {
-		setFormAddress(e.target.value)
+	function handlerSubmit(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault()
+
+		const dataCompany = {
+			id: v4(),
+			name: formName,
+			address: formAddress,
+			quantityEmp: 0,
+			selected: false,
+		}
+
+		dispatch(postCompaniesFetch(dataCompany))
+
+		setShowForm((prev) => !prev)
+	}
+
+	function onKeyDownForm(e: React.KeyboardEvent<HTMLFormElement>) {
+		if (e.code === 'Enter') {
+			e.preventDefault()
+		}
 	}
 
 	return (
@@ -115,6 +132,7 @@ function Companies() {
 				})}
 			>
 				<form
+					onKeyDown={(e) => onKeyDownForm(e)}
 					onSubmit={(e) => handlerSubmit(e)}
 					className={cl('form', { 'form--show': showForm })}
 					action=''
@@ -124,7 +142,7 @@ function Companies() {
 
 					<div className='form__field-wrapper'>
 						<input
-							onChange={(e) => handlerFormName(e)}
+							onChange={(e) => handlerFormInput(e, 'name')}
 							className='form__field-inp'
 							type='text'
 							name='name'
@@ -138,7 +156,7 @@ function Companies() {
 					</div>
 					<div className='form__field-wrapper'>
 						<input
-							onChange={(e) => handlerFormAddres(e)}
+							onChange={(e) => handlerFormInput(e, 'address')}
 							className='form__field-inp'
 							type='text'
 							name='address'

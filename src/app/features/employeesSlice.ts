@@ -1,6 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { getApiResourse, updateApiResourse } from '../shared/utils/network'
+import {
+	deleteApiResourse,
+	getApiResourse,
+	postApiResourse,
+	updateApiResourse,
+} from '../shared/utils/network'
 import { URLS_COMPANIES } from '../shared/utils/urls'
 import { IChangeEmployee, IEmployees, TRange } from '../interfaces'
 
@@ -51,6 +56,24 @@ export const updateEmployeesFetch = createAsyncThunk(
 	}
 )
 
+export const deleteEmployeesFetch = createAsyncThunk('deleteEmployees', async (ids: string[]) => {
+	if (!ids || !ids.length) return
+
+	const urls = ids.map((id) => {
+		return `${URLS_COMPANIES.BASE_URL}${URLS_COMPANIES.EMPLOYEES}/${id}`
+	})
+
+	await deleteApiResourse(urls)
+})
+
+export const postEmployeesFetch = createAsyncThunk('postEmployees', async (data: IEmployees) => {
+	const URL = `${URLS_COMPANIES.BASE_URL}${URLS_COMPANIES.EMPLOYEES}`
+
+	const result = await postApiResourse(URL, data)
+
+	return result
+})
+
 export const employeesSlice = createSlice({
 	name: 'employees',
 	initialState,
@@ -85,6 +108,34 @@ export const employeesSlice = createSlice({
 
 			if (action.payload.position) {
 				findCompany.position = action.payload.position
+			}
+		},
+
+		deleteEmployees(state) {
+			if (!state.currentEmployees || !state.currentEmployees.length) return
+
+			state.data = state.data.filter((employee) => {
+				const findCurrId = state.currentEmployees.find((id) => id === employee.id)
+
+				if (findCurrId) return false
+				return true
+			})
+
+			state.currentEmployees = []
+		},
+
+		changeSelectedAllEmployees(state, action: PayloadAction<boolean>) {
+			if (action === null || action === undefined) return
+
+			state.isSelectedAll = action.payload
+			state.data.forEach((employee) => {
+				employee.selected = action.payload
+			})
+
+			if (action.payload) {
+				state.currentEmployees = state.data.map((employee) => employee.id)
+			} else {
+				state.currentEmployees = []
 			}
 		},
 	},
@@ -131,9 +182,34 @@ export const employeesSlice = createSlice({
 		builder.addCase(updateEmployeesFetch.fulfilled, (state) => {
 			state.isLoading = false
 		})
+
+		//delete employees
+		builder.addCase(deleteEmployeesFetch.pending, (state) => {
+			state.isLoading = true
+		})
+
+		builder.addCase(deleteEmployeesFetch.fulfilled, (state) => {
+			state.isLoading = false
+		})
+
+		//post employees
+		builder.addCase(postEmployeesFetch.pending, (state) => {
+			state.isLoading = true
+		})
+
+		builder.addCase(postEmployeesFetch.fulfilled, (state, action: PayloadAction<IEmployees>) => {
+			state.isLoading = false
+			if (!action.payload) return
+			state.data.push(action.payload)
+		})
 	},
 })
 
-export const { changeSelectedEmployee, changeEmployee } = employeesSlice.actions
+export const {
+	changeSelectedEmployee,
+	changeEmployee,
+	deleteEmployees,
+	changeSelectedAllEmployees,
+} = employeesSlice.actions
 
 export default employeesSlice.reducer

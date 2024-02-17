@@ -39,21 +39,6 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 		})
 	}
 
-	function handlerEnterPressName(e: React.KeyboardEvent<HTMLInputElement>) {
-		if (e.code !== 'Enter') return
-		setIsEditName(false)
-
-		if (name === company.name) return
-
-		const newDataCompany = {
-			id: company.id,
-			name: name ? name : 'Не заполнено',
-		}
-
-		dispatch(changeCompany(newDataCompany))
-		dispatch(updateCompaniesFetch(newDataCompany))
-	}
-
 	// Address
 	function handlerDoubleClickAddress() {
 		setIsEditAddress(true)
@@ -70,19 +55,41 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 		})
 	}
 
-	function handlerEnterPressAddress(e: React.KeyboardEvent<HTMLInputElement>) {
+	// handlerEnterPress
+	function handlerEnterPress(e: React.KeyboardEvent<HTMLInputElement>, field: string) {
 		if (e.code !== 'Enter') return
-		setIsEditAddress(false)
+		switch (field) {
+			case 'name': {
+				setIsEditName(false)
 
-		if (address === company.address) return
+				if (name === company.name) break
 
-		const newDataCompany = {
-			id: company.id,
-			address: address ? address : 'Не заполнено',
+				const newDataCompany = {
+					id: company.id,
+					name: name ? name : 'Не заполнено',
+				}
+
+				dispatch(changeCompany(newDataCompany))
+				dispatch(updateCompaniesFetch(newDataCompany))
+				break
+			}
+			case 'address': {
+				setIsEditAddress(false)
+
+				if (address === company.address) break
+
+				const newDataCompany = {
+					id: company.id,
+					address: address ? address : 'Не заполнено',
+				}
+
+				dispatch(changeCompany(newDataCompany))
+				dispatch(updateCompaniesFetch(newDataCompany))
+				break
+			}
+			default:
+				break
 		}
-
-		dispatch(changeCompany(newDataCompany))
-		dispatch(updateCompaniesFetch(newDataCompany))
 	}
 
 	return (
@@ -103,7 +110,7 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 				<div className='t-companies__td t-companies__td--name'>
 					<input
 						autoFocus
-						onKeyDown={(e) => handlerEnterPressName(e)}
+						onKeyDown={(e) => handlerEnterPress(e, 'name')}
 						onChange={(e) => handlerChangeName(e)}
 						value={name}
 						className='t-companies__td-inp'
@@ -125,7 +132,7 @@ function RowCompanies({ company }: IRowCompaniesProps) {
 				<div className='t-companies__td t-companies__td--address'>
 					<input
 						autoFocus
-						onKeyDown={(e) => handlerEnterPressAddress(e)}
+						onKeyDown={(e) => handlerEnterPress(e, 'address')}
 						onChange={(e) => handlerChangeAddress(e)}
 						value={address}
 						className='t-companies__td-inp'

@@ -37,15 +37,8 @@ export const postCompaniesFetch = createAsyncThunk(
 	'postCompanies',
 	async (data: IChangeCompany) => {
 		const URL = `${URLS_COMPANIES.BASE_URL}${URLS_COMPANIES.COMPANIES}`
-		let body = {
-			id: data.id,
-			name: data.name ? data.name : '',
-			address: data.address ? data.address : '',
-			quantityEmp: 0,
-			selected: false,
-		}
 
-		const result = await postApiResourse(URL, body)
+		const result = await postApiResourse(URL, data)
 
 		return result
 	}
@@ -211,7 +204,6 @@ export const companiesSlice = createSlice({
 			state.isLoading = false
 			if (!action.payload) return
 			state.data.push(action.payload)
-			return
 		})
 	},
 })

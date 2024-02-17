@@ -46,25 +46,6 @@ function RowEmployees({ employee }: IRowEmployeesProps) {
 		})
 	}
 
-	function handlerEnterPresslastName(e: React.KeyboardEvent<HTMLInputElement>) {
-		if (e.code !== 'Enter') return
-		setIsEditLastName(false)
-
-		if (lastName === employee.fullName.lastName) return
-
-		const newDataEmployee = {
-			id: employee.id,
-			fullName: {
-				firstName: employee.fullName.firstName,
-				lastName: lastName ? lastName : 'Не заполнено',
-				secondName: employee.fullName.secondName,
-			},
-		}
-
-		dispatch(changeEmployee(newDataEmployee))
-		dispatch(updateEmployeesFetch(newDataEmployee))
-	}
-
 	// Name
 	function handlerDoubleClickFirstName() {
 		setIsEditName(true)
@@ -81,24 +62,6 @@ function RowEmployees({ employee }: IRowEmployeesProps) {
 			prev = e.target.value
 			return prev
 		})
-	}
-	function handlerEnterPressFirstName(e: React.KeyboardEvent<HTMLInputElement>) {
-		if (e.code !== 'Enter') return
-		setIsEditName(false)
-
-		if (name === employee.fullName.firstName) return
-
-		const newDataEmployee = {
-			id: employee.id,
-			fullName: {
-				firstName: firstName ? firstName : 'Не заполнено',
-				lastName: employee.fullName.lastName,
-				secondName: employee.fullName.secondName,
-			},
-		}
-
-		dispatch(changeEmployee(newDataEmployee))
-		dispatch(updateEmployeesFetch(newDataEmployee))
 	}
 
 	// Position
@@ -118,19 +81,64 @@ function RowEmployees({ employee }: IRowEmployeesProps) {
 			return prev
 		})
 	}
-	function handlerEnterPressPosition(e: React.KeyboardEvent<HTMLInputElement>) {
+
+	// handlerEnterPress
+	function handlerEnterPress(e: React.KeyboardEvent<HTMLInputElement>, field: string) {
 		if (e.code !== 'Enter') return
-		setIsEditPosition(false)
+		switch (field) {
+			case 'lastName': {
+				setIsEditLastName(false)
 
-		if (position === employee.position) return
+				if (lastName === employee.fullName.lastName) break
 
-		const newDataEmployee = {
-			id: employee.id,
-			position: position ? position : 'Не заполнено',
+				const newDataEmployee = {
+					id: employee.id,
+					fullName: {
+						firstName: employee.fullName.firstName,
+						lastName: lastName ? lastName : 'Не заполнено',
+						secondName: employee.fullName.secondName,
+					},
+				}
+
+				dispatch(changeEmployee(newDataEmployee))
+				dispatch(updateEmployeesFetch(newDataEmployee))
+				break
+			}
+			case 'firstName': {
+				setIsEditName(false)
+
+				if (firstName === employee.fullName.firstName) break
+
+				const newDataEmployee = {
+					id: employee.id,
+					fullName: {
+						firstName: firstName ? firstName : 'Не заполнено',
+						lastName: employee.fullName.lastName,
+						secondName: employee.fullName.secondName,
+					},
+				}
+
+				dispatch(changeEmployee(newDataEmployee))
+				dispatch(updateEmployeesFetch(newDataEmployee))
+				break
+			}
+			case 'position': {
+				setIsEditPosition(false)
+
+				if (position === employee.position) break
+
+				const newDataEmployee = {
+					id: employee.id,
+					position: position ? position : 'Не заполнено',
+				}
+
+				dispatch(changeEmployee(newDataEmployee))
+				dispatch(updateEmployeesFetch(newDataEmployee))
+				break
+			}
+			default:
+				break
 		}
-
-		dispatch(changeEmployee(newDataEmployee))
-		dispatch(updateEmployeesFetch(newDataEmployee))
 	}
 
 	return (
@@ -151,7 +159,7 @@ function RowEmployees({ employee }: IRowEmployeesProps) {
 				<div className='t-employees__td t-employees__td--lastname'>
 					<input
 						autoFocus
-						onKeyDown={(e) => handlerEnterPresslastName(e)}
+						onKeyDown={(e) => handlerEnterPress(e, 'lastName')}
 						onChange={(e) => handlerChangeLastName(e)}
 						value={lastName}
 						className='t-employees__td-inp'
@@ -170,7 +178,7 @@ function RowEmployees({ employee }: IRowEmployeesProps) {
 				<div className='t-employees__td t-employees__td--firsname'>
 					<input
 						autoFocus
-						onKeyDown={(e) => handlerEnterPressFirstName(e)}
+						onKeyDown={(e) => handlerEnterPress(e, 'firstName')}
 						onChange={(e) => handlerChangeFirstName(e)}
 						value={firstName}
 						className='t-employees__td-inp'
@@ -194,7 +202,7 @@ function RowEmployees({ employee }: IRowEmployeesProps) {
 				>
 					<input
 						autoFocus
-						onKeyDown={(e) => handlerEnterPressPosition(e)}
+						onKeyDown={(e) => handlerEnterPress(e, 'position')}
 						onChange={(e) => handlerChangePosition(e)}
 						value={position}
 						className='t-employees__td-inp'

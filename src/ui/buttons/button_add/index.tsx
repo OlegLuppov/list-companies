@@ -9,6 +9,7 @@ function ButtonAdd({ name, callback, title, show }: IButton) {
 			className={cl('btn-add', {
 				'btn-add--hide': !show,
 			})}
+			onKeyDown={(e) => e.preventDefault()}
 			onClick={(e) => callback(e)}
 		>
 			{name}

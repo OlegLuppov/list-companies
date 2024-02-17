@@ -5,19 +5,18 @@ import Notification from '../../../ui/notification'
 import Preloader from '../../../ui/preloader'
 import { useAppSelector, useAppDispatch } from '../../store/hooks'
 import React, { useEffect, useRef, useState } from 'react'
-import {
-	changeSelectedAllCompanies,
-	deleteCompanies,
-	deleteCompaniesFetch,
-	getCompaniesFetch,
-	postCompaniesFetch,
-} from '../../features/companiesSlice'
 import { useRange } from '../../shared/hooks/hooks'
 import ButtonAdd from '../../../ui/buttons/button_add'
 import ButtonDelete from '../../../ui/buttons/button_delete'
 import cl from 'classnames'
 import ButtonClose from '../../../ui/buttons/button_close'
-import { getEmployeesFetch } from '../../features/employeesSlice'
+import {
+	changeSelectedAllEmployees,
+	deleteEmployees,
+	deleteEmployeesFetch,
+	getEmployeesFetch,
+	postEmployeesFetch,
+} from '../../features/employeesSlice'
 import RowEmployees from '../row_employees'
 
 function Employees() {
@@ -25,12 +24,13 @@ function Employees() {
 	const scrollbar = useRef<HTMLInputElement>(null)
 	const [showPreloader, setShowPreloader] = useState<boolean>(false)
 	const [showForm, setShowForm] = useState<boolean>(false)
-	const [formName, setFormName] = useState<string>('')
-	const [formAddress, setFormAddress] = useState<string>('')
+	const [formLastName, setFormLastName] = useState<string>('')
+	const [formFirstname, setFormFirstName] = useState<string>('')
+	const [formPosition, setFormPosition] = useState<string>('')
 
 	const checkEndData = useAppSelector((state) => state.employees.checkEndData)
 	const data = useAppSelector((state) => state.employees.data)
-	const currentCompanies = useAppSelector((state) => state.employees.currentEmployees)
+	const currentEmployees = useAppSelector((state) => state.employees.currentEmployees)
 
 	const dispatch = useAppDispatch()
 
@@ -65,6 +65,81 @@ function Employees() {
 		increaseRange(10)
 	}
 
+	// delete
+	function handlerDelete() {
+		console.log('delete')
+		dispatch(deleteEmployees())
+		dispatch(deleteEmployeesFetch(currentEmployees))
+	}
+
+	//selectedAll
+	function selectedAllEmployees(e: React.ChangeEvent<HTMLInputElement>) {
+		dispatch(changeSelectedAllEmployees(e.target.checked))
+	}
+
+	//hendlerAddEmployee
+	function hendlerAdd(e: React.MouseEvent<HTMLButtonElement>) {
+		e.preventDefault()
+		setShowForm((prev) => !prev)
+		setFormLastName((prev) => {
+			if (prev === '') return prev
+			return ''
+		})
+		setFormFirstName((prev) => {
+			if (prev === '') return prev
+			return ''
+		})
+		setFormPosition((prev) => {
+			if (prev === '') return prev
+			return ''
+		})
+	}
+
+	//handlerForm
+	function handlerFormInput(e: React.ChangeEvent<HTMLInputElement>, field: string) {
+		switch (field) {
+			case 'lastName':
+				setFormLastName(e.target.value)
+				break
+
+			case 'firstName':
+				setFormFirstName(e.target.value)
+				break
+
+			case 'position':
+				setFormPosition(e.target.value)
+				break
+
+			default:
+				break
+		}
+	}
+
+	//handlerSubmit
+	function handlerSubmit(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault()
+		const dataEmployee = {
+			id: v4(),
+			companyId: v4(),
+			fullName: {
+				firstName: formFirstname ? formFirstname : 'Не заполнено',
+				lastName: formLastName ? formLastName : 'Не заполнено',
+				secondName: 'Не предусмотрено по ТЗ',
+			},
+			position: formPosition ? formPosition : 'Не заполнено',
+			selected: false,
+		}
+
+		dispatch(postEmployeesFetch(dataEmployee))
+		setShowForm((prev) => !prev)
+	}
+
+	function onKeyDownForm(e: React.KeyboardEvent<HTMLFormElement>) {
+		if (e.code === 'Enter') {
+			e.preventDefault()
+		}
+	}
+
 	return (
 		<div className='t-employees'>
 			<div
@@ -72,53 +147,77 @@ function Employees() {
 					'form-bg--show': showForm,
 				})}
 			>
-				{/* <form
-					onSubmit={(e) => handlerSubmit(e)}
-					className={cl('form', { 'form--show': showForm })}
-					action=''
-				>
-					<ButtonClose title='Закрыть' callback={hendlerAdd} />
-					<h2 className={cl('form__title', { 'form__title--show': showForm })}>Заполните данные</h2>
+				{
+					<form
+						onKeyDown={(e) => onKeyDownForm(e)}
+						onSubmit={(e) => handlerSubmit(e)}
+						className={cl('form', { 'form--show': showForm })}
+						action=''
+					>
+						<ButtonClose title='Закрыть' callback={hendlerAdd} />
+						<h2 className={cl('form__title', { 'form__title--show': showForm })}>
+							Заполните данные
+						</h2>
 
-					<div className='form__field-wrapper'>
-						<input
-							onChange={(e) => handlerFormName(e)}
-							className='form__field-inp'
-							type='text'
-							name='name'
-							id='name'
-							value={formName}
-							required
-						/>
-						<label className='form__field-lbl' htmlFor='name'>
-							Название компании
-						</label>
-					</div>
-					<div className='form__field-wrapper'>
-						<input
-							onChange={(e) => handlerFormAddres(e)}
-							className='form__field-inp'
-							type='text'
-							name='address'
-							id='addres'
-							value={formAddress}
-							required
-						/>
-						<label className='form__field-lbl' htmlFor='addres'>
-							Адрес
-						</label>
-					</div>
+						<div className='form__field-wrapper'>
+							<input
+								onChange={(e) => handlerFormInput(e, 'lastName')}
+								className='form__field-inp'
+								type='text'
+								name='lastName'
+								id='lastName'
+								value={formLastName}
+								required
+							/>
+							<label className='form__field-lbl' htmlFor='lastName'>
+								Фамилия
+							</label>
+						</div>
+						<div className='form__field-wrapper'>
+							<input
+								onChange={(e) => handlerFormInput(e, 'firstName')}
+								className='form__field-inp'
+								type='text'
+								name='firstName'
+								id='firstName'
+								value={formFirstname}
+								required
+							/>
+							<label className='form__field-lbl' htmlFor='firstName'>
+								Имя
+							</label>
+						</div>
+						<div className='form__field-wrapper'>
+							<input
+								onChange={(e) => handlerFormInput(e, 'position')}
+								className='form__field-inp'
+								type='text'
+								name='position'
+								id='position'
+								value={formPosition}
+								required
+							/>
+							<label className='form__field-lbl' htmlFor='position'>
+								Должность
+							</label>
+						</div>
 
-					<div className={cl('form__submit-wrapper', { 'form__submit-wrapper--show': showForm })}>
-						<input className='form__submit-btn' type='submit' value='Сохранить' name='Сохранить' />
-					</div>
-				</form> */}
+						<div className={cl('form__submit-wrapper', { 'form__submit-wrapper--show': showForm })}>
+							<input
+								className='form__submit-btn'
+								type='submit'
+								value='Сохранить'
+								name='Сохранить'
+							/>
+						</div>
+					</form>
+				}
 			</div>
 			<div className='t-employees__th'>
 				<div className='t-employees__tr t-employees__tr--inp'>
 					<div className='t-employees__inp-all-wrapper'>
 						<input
-							// onChange={(e) => selectedAllCompanies(e)}
+							onChange={(e) => selectedAllEmployees(e)}
 							className='t-employees__inp-all'
 							id={idForLabelInpAll}
 							type='checkbox'
@@ -128,17 +227,21 @@ function Employees() {
 						</label>
 					</div>
 					<div className='t-employees__btn-wrapper'>
-						{/* <ButtonAdd
-							title='Добавить сотрудника'
-							show={true}
-							name='+ Сотрудник'
-							callback={hendlerAdd}
-						/> */}
-						{/* <ButtonDelete
-							title='Удалить сотрудника'
-							show={!currentCompanies.length ? false : true}
-							callback={handlerDelete}
-						/> */}
+						{
+							<ButtonAdd
+								title='Добавить сотрудника'
+								show={true}
+								name='+ Сотрудник'
+								callback={hendlerAdd}
+							/>
+						}
+						{
+							<ButtonDelete
+								title='Удалить сотрудника'
+								show={!currentEmployees.length ? false : true}
+								callback={handlerDelete}
+							/>
+						}
 					</div>
 				</div>
 				<div className='t-employees__tr t-employees__tr--titles'>

@@ -9,6 +9,7 @@ function ButtonDelete({ show, title, callback }: IButton) {
 			className={cl('btn-delete', {
 				'btn-delete--hide': !show,
 			})}
+			onKeyDown={(e) => e.preventDefault()}
 			onClick={callback}
 		>
 			<div className='btn-delete__i-wrapper'></div>
