@@ -13,7 +13,7 @@
 
 
 ### DEMO APP
-![Alt Text](https://ibb.co/0twc25m)
+![Demo](https://i.ibb.co/WtT65CG/demo.gif)
 
 
 ### STACK
