@@ -203,18 +203,7 @@
       "selected": false
     },
     {
-      "id": "b09203eb-30ce-4b0b-9440-2d09fa3f71ff",
-      "companyId": null,
-      "fullName": {
-        "firstName": "1",
-        "lastName": "0",
-        "secondName": "Не предусмотрено по ТЗ"
-      },
-      "position": "1",
-      "selected": false
-    },
-    {
-      "id": "5a1dafad-aee9-4607-aed9-e55e95805dc8",
+      "id": "dbd9f677-3917-4765-a944-b95d263ff2de",
       "companyId": null,
       "fullName": {
         "firstName": "2",
@@ -222,17 +211,6 @@
         "secondName": "Не предусмотрено по ТЗ"
       },
       "position": "2",
-      "selected": false
-    },
-    {
-      "id": "70df0759-052e-458c-8c6c-c952f993b314",
-      "companyId": null,
-      "fullName": {
-        "firstName": "3",
-        "lastName": "3",
-        "secondName": "Не предусмотрено по ТЗ"
-      },
-      "position": "3",
       "selected": false
     }
   ]
