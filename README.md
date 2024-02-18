@@ -1,5 +1,4 @@
 # LIST-COMPANIES
-=======================================
 
 
 ### Description
@@ -14,8 +13,7 @@
 
 
 ### DEMO APP
-![DEMO](https://github.com/OlegLuppov/list-companies/blob/master/public/gif/demo.gif)
-
+![DEMO](https://ibb.co/0twc25m) 
 
 
 ### STACK
