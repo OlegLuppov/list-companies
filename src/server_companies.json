@@ -71,16 +71,9 @@
       "selected": false
     },
     {
-      "id": "3d1daba3-f0e0-4f63-a95d-4b92a5915ceb",
+      "id": "77621dc2-b629-4f77-9706-3e0d50877f68",
       "name": "Компания 11",
-      "address": "Адрес 11",
-      "quantityEmp": 0,
-      "selected": false
-    },
-    {
-      "id": "75d18e9f-d1b1-4be6-bd5e-7706c5cbd191",
-      "name": "Компания 12",
-      "address": "Адрес 12",
+      "address": "Компания 11",
       "quantityEmp": 0,
       "selected": false
     }
@@ -181,28 +174,6 @@
       "selected": false
     },
     {
-      "id": "7e93efe1-a751-462e-916a-b11cb9ad5d7d",
-      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
-      "fullName": {
-        "firstName": "Имя 10",
-        "lastName": "Фамилия  10",
-        "secondName": "Не предусмотрено по ТЗ"
-      },
-      "position": "Должность 10",
-      "selected": false
-    },
-    {
-      "id": "e465a2ef-bdbc-4d45-9288-17316807116f",
-      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
-      "fullName": {
-        "firstName": "Имя 11",
-        "lastName": "Фамилия 11",
-        "secondName": "Не предусмотрено по ТЗ"
-      },
-      "position": "Должность 11",
-      "selected": false
-    },
-    {
       "id": "dbd9f677-3917-4765-a944-b95d263ff2de",
       "companyId": null,
       "fullName": {
@@ -211,6 +182,116 @@
         "secondName": "Не предусмотрено по ТЗ"
       },
       "position": "2",
+      "selected": false
+    },
+    {
+      "id": "60a70672-33de-4ab2-ba5f-97d5206621d9",
+      "companyId": null,
+      "fullName": {
+        "firstName": "Олег",
+        "lastName": "Луппов",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "Frontend",
+      "selected": false
+    },
+    {
+      "id": "4da40146-84dd-4575-b88b-e577ca29e5d0",
+      "companyId": null,
+      "fullName": {
+        "firstName": "1",
+        "lastName": "1",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "1",
+      "selected": false
+    },
+    {
+      "id": "5ad95cb9-91b7-4f0f-afc9-7c6ebf245439",
+      "companyId": null,
+      "fullName": {
+        "firstName": "2",
+        "lastName": "2",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "2",
+      "selected": false
+    },
+    {
+      "id": "3bbed8f5-aa25-4ef4-b6a4-4e377da423d5",
+      "companyId": null,
+      "fullName": {
+        "firstName": "Имя",
+        "lastName": "1asca",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "Должность",
+      "selected": false
+    },
+    {
+      "id": "84103b09-5e4a-41bb-a508-40c5657a8e2d",
+      "companyId": null,
+      "fullName": {
+        "firstName": "2",
+        "lastName": "2",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "2",
+      "selected": false
+    },
+    {
+      "id": "ded4e787-b55e-4f63-93ca-ee9e7e9a14de",
+      "companyId": null,
+      "fullName": {
+        "firstName": "2",
+        "lastName": "2",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "2",
+      "selected": false
+    },
+    {
+      "id": "4247a28b-9887-4928-b62a-c866993b4aa6",
+      "companyId": null,
+      "fullName": {
+        "firstName": "2",
+        "lastName": "1",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "3",
+      "selected": false
+    },
+    {
+      "id": "16680d33-b317-4346-8aea-172cbe453870",
+      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
+      "fullName": {
+        "firstName": "Имя 9",
+        "lastName": "Фамилия 9",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "Должность 9",
+      "selected": false
+    },
+    {
+      "id": "9de744d2-249c-4725-8511-6702d688ce42",
+      "companyId": "9df088eb-a7f7-405f-96f4-699f0ce29adf",
+      "fullName": {
+        "firstName": "Имя 10",
+        "lastName": "Фамилия 10",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "Должность 10",
+      "selected": false
+    },
+    {
+      "id": "9abe8fe9-776b-48a4-8072-8880322ce85b",
+      "companyId": null,
+      "fullName": {
+        "firstName": "1",
+        "lastName": "1",
+        "secondName": "Не предусмотрено по ТЗ"
+      },
+      "position": "1",
       "selected": false
     }
   ]
