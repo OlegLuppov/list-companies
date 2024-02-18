@@ -34,7 +34,7 @@ Back-end:
 
 1. Clone this repository.
 2. [`npm install`](https://docs.npmjs.com/cli/install)
-3. cd <project dir>
+3. cd project dir
 4. Run app `npm run dev` in command line
 5. port 5173 (will open on its own)
 6. json-server port 5174 (will open on its own)
